@@ -93,7 +93,7 @@ llm_doc_search_project/
 
 Once setup is complete, run the FastAPI application:
 ```bash
-python run.py
+python -m llm_doc_search_api.main
 ```
 
 

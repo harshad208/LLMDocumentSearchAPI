@@ -52,9 +52,9 @@ def add_chunks_to_collection(
 
     try:
         collection.add(
-            embeddings=[list(e) for e in embeddings],
+            embeddings=[list(e) for e in embeddings],  # type: ignore
             documents=chunks,
-            metadatas=metadatas,
+            metadatas=metadatas,  # type: ignore
             ids=ids,
         )
         logger.info(
@@ -83,9 +83,9 @@ def query_collection(
     )
     try:
         results = collection.query(
-            query_embeddings=[list(query_embedding)],
+            query_embeddings=[list(query_embedding)],  # type: ignore
             n_results=n_results,
-            where=filter_metadata if filter_metadata else None,
+            where=filter_metadata if filter_metadata else None,  # type: ignore
             include=["metadatas", "documents", "distances"],
         )
 
