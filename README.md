@@ -56,7 +56,7 @@ llm_doc_search_project/
 
 1.  **Clone the Repository (if applicable):**
     ```bash
-    git clone <your-repo-url>
+    git clone https://github.com/harshad208/LLMDocumentSearchAPI.git
     cd llm_doc_search_project
     ```
 

@@ -42,8 +42,7 @@ jsonschema==4.24.0
 jsonschema-specifications==2025.4.1
 kubernetes==32.0.1
 llama_cpp_python==0.3.9
-# Editable install with no version control (llm_doc_search_api==1.0.0)
--e /home/harshad/Workarea/Harshad/Project/GoogleAIStudio/llm_doc_search_project
+-e git+https://github.com/harshad208/LLMDocumentSearchAPI.git@96f2c31387ce76ecde8b9b659401cac10f4f006d#egg=llm_doc_search_api
 lxml==5.4.0
 markdown-it-py==3.0.0
 MarkupSafe==3.0.2
