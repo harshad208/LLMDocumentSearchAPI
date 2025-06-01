@@ -1,0 +1,131 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+# Обычно используется для создания автономных исполняемых файлов PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Virtual environments
+venv/
+.venv/
+ENV/
+env.bak/
+env/
+# If your venv is named doc_search_venv and is outside the project,
+# you don't need to list it here if the .git repo is only inside llm_doc_search_project.
+# But if venv is inside llm_doc_search_project, the above general names cover it.
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Application Specific Files
+# --------------------------
+
+# Environment variables file (contains secrets/configs)
+.env
+
+# Uploaded documents by users (can be large and vary per deployment)
+uploads/
+
+# ChromaDB persistent data (can be large and specific to a deployment)
+chroma_data/
+
+# Downloaded LLM models (very large, user should provide/configure)
+llm_models/
+*.gguf # If GGUF files might be placed elsewhere accidentally
+
+# Log files
+*.log
+logs/
+# If you configured logging to a specific file like app.log
+app.log
+
+# SQLite or other local DB files if you were to use one for metadata
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+*.tmp
+*~
+# If you use mkstemp, tempfile, etc.
+tmp/
+
+# dotenv-linter specific (if you use it)
+report.sarif
+
+# Mypy cache
+.mypy_cache/
+
+#ruff cache
+.ruff_cache/
+
+# pytest cache
+.pytest_cache/

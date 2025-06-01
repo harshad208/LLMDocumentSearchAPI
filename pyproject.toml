@@ -1,0 +1,61 @@
+# llm_doc_search_project/pyproject.toml
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"] # CORRECTED
+build-backend = "setuptools.build_meta"
+#backend-path = ["."] # Commented out
+
+[project]
+name = "llm_doc_search_api"
+dynamic = ["version"] # Declare version as dynamic
+authors = [
+    { name = "Your Name", email = "your.email@example.com" },
+]
+description = "A FastAPI backend for LLM-powered semantic document search and Q&A."
+readme = "README.md" # Path to your README file
+requires-python = ">=3.11" # Specify your Python version requirement
+license = { file = "LICENSE" } # We'll add a LICENSE file next
+keywords = ["llm", "semantic search", "fastapi", "rag", "document search", "chromadb", "llama-cpp-python"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Framework :: FastAPI",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "fastapi>=0.110.0",
+    "uvicorn[standard]>=0.29.0",
+    "pydantic>=2.0",
+    "python-dotenv>=1.0.0",
+    "pdfplumber>=0.10.0",
+    "python-docx>=1.1.0",
+    "sentence-transformers>=2.2.0",
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "torchaudio>=2.0.0",
+    "chromadb>=0.4.20",
+    "llama-cpp-python>=0.2.50",
+    "numpy>=1.23"
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/llm_doc_search_project"
+
+[project.scripts]
+# llm-search-cli = "llm_doc_search_api.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["llm_doc_search_api"]
+exclude = ["tests*", "docs*", "examples*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "llm_doc_search_api.__version__"}
+
+# [tool.setuptools.package-data]
+# "llm_doc_search_api" = ["*.json", "templates/*.html"]
