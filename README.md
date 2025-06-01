@@ -20,27 +20,29 @@ This project provides a backend API for uploading documents (PDF, DOCX, TXT) and
 ```bash
 
 llm_doc_search_project/
-├── .env.example # Example environment file (to be created)
-├── .gitignore
-├── chroma_data/ # Stores ChromaDB data (add to .gitignore)
-├── llm_models/ # For storing downloaded GGUF LLM models (add to .gitignore)
-├── uploads/ # Stores uploaded documents (add to .gitignore)
-├── venv/ # Python virtual environment (add to .gitignore)
-├── requirements.txt
-├── run.py # Convenience script to run the FastAPI app
-├── setup.py # (To be added for packaging)
+├── CHANGELOG.md
+├── chroma_data
+│   ├── 4b98565f-4033-46e9-a1a8-0e0f90fab849
+│   └── chroma.sqlite3
+├── env.example
+├── llm_doc_search_api
+│   ├── chunking.py
+│   ├── config.py
+│   ├── database.py
+│   ├── embedding_generator.py
+│   ├── __init__.py
+│   ├── llm_handler.py
+│   ├── main.py
+│   ├── models.py
+│   ├── __pycache__
+│   ├── routes.py
+│   ├── text_extractor.py
+│   └── vector_store.py
+├── llm_models
+│   └── Phi-3-mini-4k-instruct-Q4_K_M.gguf
+├── pyproject.toml
 ├── README.md
-├── LICENSE # (To be added)
-├── CHANGELOG.md # (To be added)
-└── llm_doc_search_api/ # Main Python package for the API
-├── init.py
-├── main.py # FastAPI application, endpoints
-├── config.py # Configuration loading, logging setup
-├── text_extractor.py # Utilities for extracting text from files
-├── chunking.py # Utilities for splitting text into chunks
-├── embedding_generator.py # Utilities for generating text embeddings
-├── vector_store.py # Utilities for interacting with ChromaDB
-└── llm_handler.py # Utilities for LLM loading and response generation
+└── requirements.txt
 
 ```
 
