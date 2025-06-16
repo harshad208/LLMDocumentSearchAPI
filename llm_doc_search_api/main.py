@@ -4,6 +4,7 @@ from contextlib import asynccontextmanager
 from logging.config import dictConfig
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from . import config
 from .database import save_db_to_file
@@ -62,6 +63,25 @@ app = FastAPI(
 # Include the API routes
 app.include_router(api_router)
 
+ALLOW_ALL = os.getenv("CORS_ALLOW_ALL", "false").lower() == "true"
+
+if ALLOW_ALL:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=False,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+else:
+    allowed = os.getenv("CORS_ALLOW_ORIGINS", "").split(",")
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=[origin.strip() for origin in allowed if origin],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
 # --- Main execution ---
 if __name__ == "__main__":

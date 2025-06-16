@@ -5,6 +5,7 @@ import uuid
 from typing import Any, Dict, List
 
 from fastapi import APIRouter, Body, File, HTTPException, UploadFile
+from fastapi.responses import FileResponse
 
 from . import config
 from .chunking import get_text_chunks_simple
@@ -347,6 +348,40 @@ async def get_document_metadata_by_id(doc_id: str):
             status_code=500,
             detail="Internal server error: Invalid document metadata format.",
         )
+
+
+@router.get("/documents/preview/{doc_id}", tags=["Document Management"])
+def get_document_preview_by_id(doc_id: str):
+    logger.info(f"Request for preview of document ID: {doc_id}")
+
+    if doc_id not in documents_db:
+        logger.warning(f"Document ID {doc_id} not found for preview.")
+        raise HTTPException(status_code=404, detail="Document not found")
+
+    meta_dict = documents_db[doc_id]
+    if not isinstance(meta_dict, dict):
+        logger.error(f"Data for doc_id {doc_id} is not a dict: {type(meta_dict)}")
+        raise HTTPException(status_code=500, detail="Invalid document metadata format.")
+
+    try:
+        document_meta = DocumentMetadata(**meta_dict)
+    except Exception as e:
+        logger.error(
+            f"Pydantic validation error for doc_id {doc_id}: {e}. Data: {meta_dict}",
+            exc_info=True,
+        )
+        raise HTTPException(status_code=500, detail="Invalid document metadata.")
+
+    if not document_meta.file_path or not os.path.exists(document_meta.file_path):
+        logger.warning(f"File not found at path: {document_meta.file_path}")
+        raise HTTPException(status_code=404, detail="File not found on server.")
+
+    filename = document_meta.filename or os.path.basename(document_meta.file_path)
+    media_type = document_meta.content_type or "application/octet-stream"
+
+    return FileResponse(
+        path=document_meta.file_path, media_type=media_type, filename=filename
+    )
 
 
 @router.delete("/docs/{doc_id}", status_code=200, tags=["Document Management"])
